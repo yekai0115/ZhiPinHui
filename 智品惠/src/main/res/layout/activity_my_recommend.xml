@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/bg_main_bottom"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+
+            android:gravity="center"
+            android:text="@string/tishi_20"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_18" />
+
+        <TextView
+            android:id="@+id/tv_manage"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:background="@color/bg_main_bottom"
+            android:gravity="center"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="@string/tishi_21"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_15" />
+    </RelativeLayout>
+
+
+    <com.zph.commerce.widget.TopNvgBar5
+        android:id="@+id/top_nvg_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        custom:right="@string/tishi_21"
+        custom:rvisible="true"
+        custom:title="@string/tishi_20" />
+
+
+
+
+
+    <com.zph.commerce.view.pulltorefresh.PullLayout
+        android:id="@+id/refresh_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/refresh_head" />
+
+        <com.zph.commerce.view.pullableview.PullableRefreshScrollView
+            android:id="@+id/mScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/recommend_background"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/recommend_banner" />
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="35dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="202dp"
+                        android:layout_gravity="center"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/recommend_code_backgroud" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:orientation="vertical"
+                        android:paddingLeft="15.75dp"
+                        android:paddingRight="15.75dp"
+                        android:paddingTop="13.75dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="@color/white">
+                            <ImageView
+                                android:id="@+id/a_recommend_qrcode"
+                                android:layout_width="143.5dp"
+                                android:layout_height="143.5dp"
+                                android:gravity="center" />
+                        </LinearLayout>
+                        <TextView
+                            android:id="@+id/tv_save"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center|bottom"
+                            android:paddingBottom="9dp"
+                            android:paddingTop="9dp"
+                            android:gravity="center_horizontal"
+                            android:text="长按保存二维码"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/size_11" />
+                    </LinearLayout>
+                </FrameLayout>
+
+                <Button
+                    android:id="@+id/btn_share"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="37.5dp"
+                    android:layout_marginRight="37.5dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/bg_login_style"
+                    android:text="@string/tishi_39"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+
+                <LinearLayout
+                    android:id="@+id/ll_recommend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="13.5dp"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/tishi_23"
+                        android:textColor="@color/color9"
+                        android:textSize="@dimen/size_14" />
+
+                    <TextView
+                        android:id="@+id/tv_recommend"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:paddingLeft="5dp"
+                        android:text="18813904075"
+                        android:textColor="@color/color9"
+                        android:textSize="@dimen/size_14" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/tishi_24"
+                        android:textColor="@color/color9"
+                        android:textSize="@dimen/size_14" />
+
+                    <TextView
+                        android:id="@+id/tv_recommend_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:paddingLeft="2dp"
+                        android:paddingRight="2dp"
+                        android:text="100"
+                        android:textColor="@color/color9"
+                        android:textSize="@dimen/size_14"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/tishi_25"
+                        android:textColor="@color/color9"
+                        android:textSize="@dimen/size_14" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="40dp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:layout_marginTop="37.5dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingBottom="40dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="20dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/tishi_26"
+                        android:textColor="@color/tv_color7"
+                        android:textSize="@dimen/size_16"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="30dp"
+                        android:layout_height="2.5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/bg_style4" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|left"
+                        android:layout_marginTop="17.5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:gravity="top|left"
+                            android:text="@string/tishi_27"
+                            android:textColor="@color/tv_color7"
+                            android:textSize="@dimen/size_13" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="@string/tishi_28"
+                            android:lineSpacingMultiplier="1.5"
+                            android:textColor="@color/tv_color7"
+                            android:textSize="@dimen/size_13" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|left"
+                        android:visibility="gone"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:gravity="center|left"
+                            android:text="@string/tishi_27"
+                            android:textColor="@color/tv_color7"
+                            android:textSize="@dimen/size_13"
+                            android:visibility="invisible" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="@string/tishi_29"
+                            android:textColor="@color/tv_color7"
+                            android:textSize="@dimen/size_13" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|left"
+                        android:layout_marginTop="17.5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:gravity="top|left"
+                            android:text="@string/tishi_30"
+                            android:textColor="@color/tv_color7"
+                            android:textSize="@dimen/size_13" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:lineSpacingMultiplier="1.5"
+                            android:text="你推荐的人又推荐一个人，购买一台小哈，你会得到200鼓励积分。"
+                            android:textColor="@color/tv_color7"
+                            android:textSize="@dimen/size_13" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|left"
+                        android:layout_marginTop="10dp"
+                        android:visibility="gone"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:gravity="center|left"
+                            android:text="@string/tishi_30"
+                            android:textColor="@color/tv_color7"
+                            android:textSize="@dimen/size_13"
+                            android:visibility="invisible" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="@string/tishi_32"
+                            android:textColor="@color/tv_color7"
+                            android:textSize="@dimen/size_13" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="32dp"
+                        android:gravity="center"
+                        android:text="@string/tishi_33"
+                        android:textColor="@color/tv_color7"
+                        android:textSize="@dimen/size_16"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="30dp"
+                        android:layout_height="2.5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/bg_style4" />
+
+
+                    <TextView
+                        android:id="@+id/tv_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="17.5dp"
+                        android:gravity="center|left"
+                        android:lineSpacingMultiplier="1.3"
+                        android:text="@string/tishi_34"
+                        android:textColor="@color/tv_color7"
+                        android:textSize="@dimen/size_13" />
+
+                    <TextView
+                        android:id="@+id/tv_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:gravity="center|left"
+                        android:lineSpacingMultiplier="1.3"
+                        android:text="@string/tishi_35"
+                        android:textColor="@color/tv_color7"
+                        android:textSize="@dimen/size_13" />
+                    <TextView
+                        android:id="@+id/tv_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:gravity="center|left"
+                        android:lineSpacingMultiplier="1.3"
+                        android:text="@string/tishi_36"
+                        android:textColor="@color/tv_color7"
+                        android:textSize="@dimen/size_13" />
+
+                    <TextView
+                        android:id="@+id/tv_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:gravity="center|left"
+                        android:lineSpacingMultiplier="1.3"
+                        android:text="@string/tishi_37"
+                        android:textColor="@color/tv_color7"
+                        android:textSize="@dimen/size_13" />
+
+                    <TextView
+                        android:id="@+id/tv_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:gravity="center|left"
+                        android:lineSpacingMultiplier="1.3"
+                        android:text="@string/tishi_38"
+                        android:textColor="@color/tv_color7"
+                        android:textSize="@dimen/size_13" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </com.zph.commerce.view.pullableview.PullableRefreshScrollView>
+
+        <include layout="@layout/load_more" />
+
+
+    </com.zph.commerce.view.pulltorefresh.PullLayout>
+
+
+</LinearLayout>

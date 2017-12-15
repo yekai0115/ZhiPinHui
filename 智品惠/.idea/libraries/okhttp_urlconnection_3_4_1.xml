@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="okhttp-urlconnection-3.4.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../A2服务器/libs/okhttp-urlconnection-3.4.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ly_main_weixin"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_blank_color"
+    android:orientation="vertical">
+
+
+    <com.zph.commerce.widget.TopNvgBar5
+        android:id="@+id/llytTitle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        custom:lvisible="true"
+        custom:rvisible="false"
+        custom:title="@string/tishi_50" />
+
+
+    <com.zph.commerce.view.statelayout.StateLayout
+        android:id="@+id/stateLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/llytTitle">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.zph.commerce.widget.StretchScrollView
+                android:id="@+id/scroll_detal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/bg_blank_color"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:paddingBottom="17.5dp"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="17dp">
+
+
+                        <ImageView
+                            android:id="@+id/img_goods"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@string/app_name"
+                            android:padding="2dp" />
+
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="15dp"
+                            android:background="@color/white"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="fill_parent"
+                                    android:gravity="center|top"
+                                    android:text="物流公司:"
+                                    android:textColor="@color/tv_color2"
+                                    android:textSize="@dimen/size_12" />
+
+                                <TextView
+                                    android:id="@+id/tv_company"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="fill_parent"
+                                    android:layout_marginLeft="5dp"
+                                    android:gravity="center|left|top"
+                                    android:textColor="@color/gray_33"
+                                    android:textSize="@dimen/size_12" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ll_dd"
+                                android:layout_width="fill_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="fill_parent"
+                                    android:gravity="center"
+                                    android:text="运单编号:"
+                                    android:textColor="@color/tv_color16"
+                                    android:textSize="@dimen/size_12" />
+
+                                <TextView
+                                    android:id="@+id/tv_wl_num"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="fill_parent"
+                                    android:layout_marginLeft="5dp"
+                                    android:gravity="center|left"
+                                    android:textColor="@color/tv_color16"
+                                    android:textSize="@dimen/size_12" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="fill_parent"
+                                    android:gravity="center|bottom"
+                                    android:text="官方电话:"
+                                    android:textColor="@color/tv_color16"
+                                    android:textSize="@dimen/size_12" />
+
+                                <TextView
+                                    android:id="@+id/tv_phone"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="fill_parent"
+                                    android:layout_marginLeft="5dp"
+                                    android:gravity="center|bottom"
+                                    android:textColor="@color/tv_color16"
+                                    android:textSize="@dimen/size_12" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:background="@color/bg_blank_color" />
+
+                    <ListView
+                        android:id="@+id/lv_wuliu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:divider="@color/white"
+                        android:dividerHeight="0dp"
+                        android:listSelector="@color/toming"
+                        android:scrollbars="none" />
+                </LinearLayout>
+            </com.zph.commerce.widget.StretchScrollView>
+        </FrameLayout>
+    </com.zph.commerce.view.statelayout.StateLayout>
+</RelativeLayout>

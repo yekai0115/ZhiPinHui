@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="autoupdatesdk-release-">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/3d94debcd4b517e9f48b3bbd860432d9ebf40382/output/jars/libs/patchupdate.jar!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/3d94debcd4b517e9f48b3bbd860432d9ebf40382/output/jars/libs/galaxy_lite.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/3d94debcd4b517e9f48b3bbd860432d9ebf40382/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/3d94debcd4b517e9f48b3bbd860432d9ebf40382/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/rl_weixin"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:paddingLeft="15dp">
+
+        <TextView
+            android:id="@+id/tv_freight_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center|left"
+            android:text="@string/tv_60"
+            android:textColor="@color/tv_color2"
+            android:textSize="@dimen/size_15" />
+
+
+        <TextView
+            android:id="@+id/tv_freight_price"
+            android:layout_toRightOf="@id/tv_freight_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:gravity="center|left"
+            android:text="@string/tv_60"
+            android:textColor="@color/tv_color2"
+            android:textSize="@dimen/size_15" />
+
+        <CheckBox
+            android:id="@+id/cb_freight"
+            style="@style/payCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+
+            android:background="@color/line_color" />
+    </RelativeLayout>
+
+</LinearLayout>

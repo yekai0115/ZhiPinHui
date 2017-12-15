@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_blank_color"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <com.zph.commerce.widget.TopNvgBar5
+        android:id="@+id/top_nvg_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        custom:lvisible="true"
+        custom:rvisible="false"
+        custom:title="@string/chanpinfenlei" />
+
+
+    <com.zph.commerce.view.statelayout.StateLayout
+        android:id="@+id/stateLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.zph.commerce.view.pulltorefresh.PullToRefreshLayout
+            android:id="@+id/category_refresh_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+           >
+
+            <include layout="@layout/refresh_head" />
+
+            <com.zph.commerce.view.pullableview.PullableRefreshScrollView
+                android:id="@+id/scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:focusableInTouchMode="true"
+                android:scrollbars="none">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <com.zph.commerce.widget.MyListView
+                        android:id="@+id/catergory_first"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:divider="@color/toming"
+                        android:dividerHeight="15dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingTop="15dp"
+                        android:scrollbars="none" />
+
+                </RelativeLayout>
+            </com.zph.commerce.view.pullableview.PullableRefreshScrollView>
+
+            <include layout="@layout/load_more" />
+        </com.zph.commerce.view.pulltorefresh.PullToRefreshLayout>
+    </com.zph.commerce.view.statelayout.StateLayout>
+</LinearLayout>

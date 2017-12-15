@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_blank_color"
+    android:orientation="vertical">
+
+    <com.zph.commerce.widget.TopNvgBar5
+        android:id="@+id/top_nvg_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        custom:lvisible="true"
+        custom:rvisible="false"
+        custom:title="@string/tishi_100" />
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12.5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="12.5dp">
+
+                <ImageView
+                    android:id="@+id/iv_goods_pic"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:layout_gravity="center"
+                    android:scaleType="fitXY" />
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="13dp"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/tv_goodsTitle"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="2.5dp"
+                    android:gravity="center|left"
+                    android:maxLines="2"
+                    android:text="dfdfdfdfdfdfdfdf"
+                    android:textColor="@color/tv_color2"
+                    android:textSize="@dimen/size_15" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tishi_3"
+                        android:textColor="@color/tv_color16"
+                        android:textSize="@dimen/size_13" />
+
+                    <TextView
+                        android:id="@+id/tv_guige"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:text="黑色xl"
+                        android:textColor="@color/tv_color16"
+                        android:textSize="@dimen/size_13" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            android:background="@color/white">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="17.5dp"
+                android:text="@string/title_1"
+                android:textColor="@color/tv_color2"
+                android:textSize="@dimen/size_15" />
+
+
+            <EditText
+                android:id="@+id/ed_after_sale"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:gravity="center|left|top"
+                android:hint="@string/tishi_91"
+                android:maxLength="50"
+                android:paddingTop="15dp"
+                android:paddingBottom="56dp"
+                android:textColor="@color/tv_color2"
+                android:textColorHint="@color/text_hint_color"
+                android:textSize="@dimen/size_15" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="22.5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="17.5dp"
+                android:text="@string/title_1"
+                android:textColor="@color/tv_color2"
+                android:textSize="@dimen/size_15" />
+
+
+            <com.zph.commerce.widget.MyGridView
+                android:id="@+id/gv_pic"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="22.5dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:horizontalSpacing="5dp"
+                android:numColumns="4"
+                android:scrollbars="none"
+                android:verticalSpacing="15dp" />
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_after_sale"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="33dp"
+            android:layout_marginBottom="33dp"
+            android:background="@drawable/bg_login_style"
+            android:text="@string/title_2"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+
+
+
+
+    </LinearLayout>
+
+
+</ScrollView>
+
+</LinearLayout>

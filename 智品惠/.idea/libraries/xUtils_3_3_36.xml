@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="xUtils-3.3.36">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../A2服务器/libs/xUtils-3.3.36.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

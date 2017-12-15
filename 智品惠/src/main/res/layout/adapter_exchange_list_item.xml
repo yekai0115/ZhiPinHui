@@ -1,0 +1,84 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/order_linear"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="15dp"
+    android:paddingLeft="20dp"
+    android:paddingTop="22dp"
+    android:background="@color/white"
+    android:orientation="horizontal">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+       >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.zph.commerce.view.HandyTextView
+                android:id="@+id/tv_bank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="提现到中国银行"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:layout_weight="1"
+                android:textColor="@color/tv_color2"
+                android:textSize="@dimen/size_15" />
+            <com.zph.commerce.view.HandyTextView
+                android:id="@+id/iar_status"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/huanxing_shape"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+        </LinearLayout>
+        <com.zph.commerce.view.HandyTextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="7dp"
+            android:text="2017"
+            android:textColor="@color/tv_none"
+            android:textSize="@dimen/size_14" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingRight="20dp"
+        android:orientation="vertical">
+        <com.zph.commerce.view.HandyTextView
+            android:id="@+id/tv_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_15"
+            android:text="2017"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/tv_color2"
+            />
+
+        <com.zph.commerce.view.HandyTextView
+            android:id="@+id/tv_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="7dp"
+            android:text="2017"
+            android:textColor="@color/color31"
+            android:textSize="@dimen/size_14" />
+
+
+    </LinearLayout>
+</LinearLayout>

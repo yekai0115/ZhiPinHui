@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/tv_after_sale_state"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginLeft="15dp"
+        android:gravity="center|left"
+        android:text="2017233222222"
+        android:textColor="@color/bg_main_bottom"
+        android:textSize="@dimen/size_15" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/line_color" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="12.5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="12.5dp">
+
+        <ImageView
+            android:id="@+id/img_goods_pic"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/tv_goods_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:ellipsize="end"
+                android:lineSpacingMultiplier="1.2"
+                android:maxLines="2"
+                android:text="场v许昌v场v场v场v场v场v场v场v差山东师范似懂非懂v"
+                android:textColor="@color/tv_color2"
+                android:textSize="@dimen/size_15" />
+
+
+            <TextView
+                android:id="@+id/tv_guige"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center|left|bottom"
+                android:text="dsd"
+                android:textColor="@color/tv_color4"
+                android:textSize="@dimen/size_12" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

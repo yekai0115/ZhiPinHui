@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_blank_color"
+    android:orientation="vertical">
+
+
+    <com.zph.commerce.widget.TopNvgBar5
+        android:id="@+id/top_nvg_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        custom:lvisible="true"
+        custom:rvisible="false"
+        custom:title="@string/tishi_96" />
+
+
+    <LinearLayout
+        android:id="@+id/ll_fenlei"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:layout_below="@id/top_nvg_bar"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:gravity="center|left"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_total"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:background="@drawable/bg_evaluate_good_chose"
+                android:gravity="center"
+                android:text="@string/tishi_95"
+                android:textColor="@color/chose_evaluate_textcolor" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_good"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:background="@drawable/bg_evaluate_good_chose"
+                android:gravity="center"
+                android:text="@string/tishi_87"
+                android:textColor="@color/chose_evaluate_textcolor" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:background="@drawable/bg_evaluate_good_chose"
+                android:gravity="center"
+                android:text="@string/tishi_88"
+                android:textColor="@color/chose_evaluate_textcolor" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_negative"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:background="@drawable/bg_evaluate_good_chose"
+                android:gravity="center"
+                android:text="@string/tishi_89"
+                android:textColor="@color/chose_evaluate_textcolor" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <com.zph.commerce.view.statelayout.StateLayout
+        android:id="@+id/stateLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ll_fenlei"
+        android:background="@color/bg_blank_color"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <com.zph.commerce.view.pulltorefresh.PullLayout
+                android:id="@+id/refresh_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <include layout="@layout/refresh_head" />
+
+                <com.zph.commerce.view.pullableview.PullableRefreshScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:background="@color/line_color" />
+
+
+                        <com.zph.commerce.widget.MyListView
+                            android:id="@+id/lv_evaluate"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:divider="@color/bg_blank_color"
+                            android:dividerHeight="10dp" />
+                    </LinearLayout>
+
+                </com.zph.commerce.view.pullableview.PullableRefreshScrollView>
+
+                <include layout="@layout/load_more" />
+            </com.zph.commerce.view.pulltorefresh.PullLayout>
+
+        </LinearLayout>
+
+    </com.zph.commerce.view.statelayout.StateLayout>
+</RelativeLayout>

@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_blank_color"
+    android:orientation="vertical">
+
+    <com.zph.commerce.widget.TopNvgBar5
+        android:id="@+id/top_nvg_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        custom:title="@string/tishi_51" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/ll_botttom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="5dp"
+                android:layout_alignParentTop="true"
+                android:background="@color/bg_blank_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="15dp"
+                    android:gravity="center"
+                    android:text="@string/shifukuan"
+                    android:textColor="@color/color32"
+                    android:textSize="@dimen/size_14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:text="@string/ae_money_sign"
+                    android:textColor="@color/bg_main_bottom"
+                    android:textSize="@dimen/size_12" />
+
+                <TextView
+                    android:id="@+id/tv_shifukuan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center"
+                    android:textColor="@color/bg_main_bottom"
+                    android:textSize="@dimen/size_18" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center|right">
+
+                    <Button
+                        android:id="@+id/btn_operate"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:background="@color/bg_main_bottom4"
+                        android:gravity="center"
+                        android:text="@string/tishi_47"
+                        android:textColor="@color/bg_main_bottom"
+                        android:textSize="@dimen/size_16" />
+                    <Button
+                        android:id="@+id/btn_evaluate"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:background="@color/bg_main_bottom"
+                        android:gravity="center"
+                        android:text="@string/tishi_94"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/size_16"
+                        android:visibility="gone"/>
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <com.zph.commerce.view.statelayout.StateLayout
+            android:id="@+id/stateLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/ll_botttom">
+
+            <com.zph.commerce.view.pulltorefresh.PullLayout
+                android:id="@+id/refresh_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <include layout="@layout/refresh_head" />
+
+                <com.zph.commerce.view.pullableview.PullableRefreshScrollView
+                    android:id="@+id/mScrollView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="none">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_top"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:id="@+id/tv_order_state"
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:background="@color/bg_main_bottom"
+                                android:gravity="center|left"
+                                android:paddingLeft="25dp"
+                                android:text="已发货"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/size_18" />
+
+
+                            <LinearLayout
+                                android:id="@+id/ll_address"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="15dp"
+                                        android:layout_marginRight="11dp"
+                                        android:contentDescription="@string/app_name"
+                                        android:src="@drawable/buy_address" />
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="15dp"
+                                        android:layout_marginTop="18dp"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
+
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
+                                                android:gravity="center|left"
+                                                android:text="@string/tishi_52"
+                                                android:textColor="@color/order_text_color"
+                                                android:textSize="@dimen/size_14" />
+
+                                            <TextView
+                                                android:id="@+id/tv_sh_name"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
+                                                android:layout_marginLeft="5dp"
+                                                android:gravity="center|left"
+                                                android:text="测试"
+                                                android:textColor="@color/order_text_color"
+                                                android:textSize="@dimen/size_14" />
+
+                                            <TextView
+                                                android:id="@+id/tv_phone"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginRight="15dp"
+                                                android:gravity="center|right"
+                                                android:text="18813904075"
+                                                android:textColor="@color/order_text_color"
+                                                android:textSize="@dimen/size_14" />
+
+
+                                        </LinearLayout>
+
+
+                                        <TextView
+                                            android:id="@+id/tv_address"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginRight="15dp"
+                                            android:layout_marginTop="11dp"
+                                            android:text="18813904075"
+                                            android:textColor="@color/tv_color16"
+                                            android:textSize="@dimen/size_14" />
+                                    </LinearLayout>
+
+                                    <ImageView
+                                        android:id="@+id/img_change"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center"
+                                        android:contentDescription="@string/app_name"
+                                        android:paddingLeft="15dp"
+                                        android:paddingRight="15dp"
+                                        android:src="@drawable/icon_right_black" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/ll_wl"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:background="@color/white"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="15dp"
+                                        android:layout_marginRight="11dp"
+                                        android:contentDescription="@string/app_name"
+                                        android:src="@drawable/my_logistics" />
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="16dp"
+                                        android:layout_marginTop="16dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center|left"
+                                        android:orientation="vertical">
+
+
+                                        <TextView
+                                            android:id="@+id/tv_wl_state"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center|left"
+                                            android:text="@string/tishi_52"
+                                            android:textColor="@color/bg_main_bottom"
+                                            android:textSize="@dimen/size_14" />
+
+
+                                        <TextView
+                                            android:id="@+id/tv_wl_content"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginRight="15dp"
+                                            android:layout_marginTop="11dp"
+                                            android:text="18813904075"
+                                            android:textColor="@color/bg_main_bottom"
+                                            android:textSize="@dimen/size_14" />
+
+                                        <TextView
+                                            android:id="@+id/tv_wl_time"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginRight="15dp"
+                                            android:layout_marginTop="11dp"
+                                            android:text="18813904075"
+                                            android:textColor="@color/bg_main_bottom"
+                                            android:textSize="@dimen/size_14" />
+                                    </LinearLayout>
+
+                                    <ImageView
+
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center"
+                                        android:contentDescription="@string/app_name"
+                                        android:paddingLeft="15dp"
+                                        android:paddingRight="15dp"
+                                        android:src="@drawable/icon_right_black" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:layout_marginTop="15dp"
+                                android:background="@color/white"
+                                android:drawableLeft="@drawable/buy_shop"
+                                android:drawablePadding="5.5dp"
+                                android:gravity="center|left"
+                                android:paddingLeft="15dp"
+                                android:text="@string/tishi_2"
+                                android:textColor="@color/tv_color2"
+                                android:textSize="@dimen/size_15" />
+
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="0.5dp"
+                                android:background="@color/line_color" />
+
+
+                            <com.zph.commerce.widget.MyListView
+                                android:id="@+id/lv_Order"
+                                android:layout_width="fill_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:divider="@color/bg_blank_color"
+                                android:dividerHeight="5dp"
+                                android:scrollbars="none" />
+
+
+                            <RelativeLayout
+                                android:id="@+id/rl_point"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:background="@color/white"
+                                android:orientation="horizontal">
+
+
+                                <View
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="0.5dp"
+                                    android:layout_alignParentTop="true"
+                                    android:background="@color/line_color" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="fill_parent"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_marginLeft="15dp"
+                                    android:gravity="center"
+                                    android:text="@string/tishi_54"
+                                    android:textColor="@color/color32"
+                                    android:textSize="@dimen/size_12" />
+
+
+                                <TextView
+                                    android:id="@+id/tv_use_point"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="fill_parent"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginRight="15dp"
+                                    android:gravity="center|right"
+                                    android:text="包邮"
+                                    android:textColor="@color/bg_main_bottom"
+                                    android:textSize="@dimen/size_12" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white">
+
+
+                                <View
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="0.5dp"
+                                    android:layout_alignParentTop="true"
+                                    android:background="@color/line_color" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="fill_parent"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_marginBottom="11.5dp"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_marginTop="15dp"
+                                    android:text="@string/tishi_55"
+                                    android:textColor="@color/color32"
+                                    android:textSize="@dimen/size_14" />
+
+                                <TextView
+                                    android:layout_width="30px"
+                                    android:layout_height="fill_parent"
+                                    android:layout_centerInParent="true"
+                                    android:layout_toLeftOf="@+id/tv_shifu"
+                                    android:gravity="center"
+                                    android:paddingTop="2px"
+                                    android:text="@string/tv_57"
+                                    android:textColor="@color/bg_main_bottom"
+                                    android:textSize="@dimen/size_11" />
+
+                                <TextView
+                                    android:id="@+id/tv_shifu"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="fill_parent"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginRight="15dp"
+                                    android:gravity="center|right"
+                                    android:text="20"
+                                    android:textColor="@color/bg_main_bottom"
+                                    android:textSize="@dimen/size_16" />
+
+
+                            </RelativeLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="30dp"
+                                android:layout_marginTop="15dp"
+                                android:background="@color/white"
+                                android:orientation="vertical"
+                                android:paddingBottom="18dp"
+                                android:paddingLeft="15dp"
+                                android:paddingTop="18dp">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="fill_parent"
+                                        android:text="@string/tishi_56"
+                                        android:textColor="@color/tv_color4"
+                                        android:textSize="@dimen/size_12" />
+
+
+                                    <TextView
+                                        android:id="@+id/tv_order_id"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="fill_parent"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_centerInParent="true"
+                                        android:layout_marginRight="15dp"
+                                        android:gravity="center|right"
+                                        android:text="fdfdfdfdfdfdfdf"
+                                        android:textColor="@color/tv_color4"
+                                        android:textSize="@dimen/size_12" />
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="11dp"
+                                    android:orientation="horizontal">
+
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="fill_parent"
+                                        android:text="@string/tishi_57"
+                                        android:textColor="@color/tv_color4"
+                                        android:textSize="@dimen/size_12" />
+
+
+                                    <TextView
+                                        android:id="@+id/tv_trade_id"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="fill_parent"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_centerInParent="true"
+                                        android:layout_marginRight="15dp"
+                                        android:gravity="center|right"
+                                        android:text="fdfdfdfdfdfdfdf"
+                                        android:textColor="@color/tv_color4"
+                                        android:textSize="@dimen/size_12" />
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="11dp"
+                                    android:orientation="horizontal">
+
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="fill_parent"
+                                        android:text="@string/tishi_58"
+                                        android:textColor="@color/tv_color4"
+                                        android:textSize="@dimen/size_12" />
+
+
+                                    <TextView
+                                        android:id="@+id/tv_buy_time"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="fill_parent"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_centerInParent="true"
+                                        android:layout_marginRight="15dp"
+                                        android:gravity="center|right"
+                                        android:text="fdfdfdfdfdfdfdf"
+                                        android:textColor="@color/tv_color4"
+                                        android:textSize="@dimen/size_12" />
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="11dp"
+                                    android:orientation="horizontal">
+
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="fill_parent"
+                                        android:text="@string/tishi_59"
+                                        android:textColor="@color/tv_color4"
+                                        android:textSize="@dimen/size_12" />
+
+
+                                    <TextView
+                                        android:id="@+id/tv_pay_time"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="fill_parent"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_centerInParent="true"
+                                        android:layout_marginRight="15dp"
+                                        android:gravity="center|right"
+                                        android:text="fdfdfdfdfdfdfdf"
+                                        android:textColor="@color/tv_color4"
+                                        android:textSize="@dimen/size_12" />
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="11dp"
+                                    android:orientation="horizontal">
+
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="fill_parent"
+                                        android:text="@string/tishi_60"
+                                        android:textColor="@color/tv_color4"
+                                        android:textSize="@dimen/size_12" />
+
+
+                                    <TextView
+                                        android:id="@+id/tv_fahuo_time"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="fill_parent"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_centerInParent="true"
+                                        android:layout_marginRight="15dp"
+                                        android:gravity="center|right"
+                                        android:text="fdfdfdfdfdfdfdf"
+                                        android:textColor="@color/tv_color4"
+                                        android:textSize="@dimen/size_12" />
+
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+                </com.zph.commerce.view.pullableview.PullableRefreshScrollView>
+
+                <include layout="@layout/load_more" />
+            </com.zph.commerce.view.pulltorefresh.PullLayout>
+        </com.zph.commerce.view.statelayout.StateLayout>
+    </RelativeLayout>
+</LinearLayout>

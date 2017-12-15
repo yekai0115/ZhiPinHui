@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_share"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/toming"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/llayout_share"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="配送方式"
+            android:textColor="@color/gray_33"
+            android:textSize="14sp" />
+
+
+        <com.zph.commerce.widget.MyListView
+            android:id="@+id/lv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@null"/>
+
+
+        <TextView
+            android:id="@+id/tv_sure"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="100dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/tv_4"
+            android:background="@color/bg_main_bottom"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_17" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/close_view"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/llayout_share" />
+
+
+</RelativeLayout>
