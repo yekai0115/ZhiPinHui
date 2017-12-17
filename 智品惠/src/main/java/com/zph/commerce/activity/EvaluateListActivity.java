@@ -68,7 +68,6 @@ public class EvaluateListActivity extends BaseActivity implements PullLayout.OnR
 
     private EvaluateAdapter adapter;
     private List<CommentContent> orderInfoList = new ArrayList<CommentContent>();
-    private String token;
     private int leval;
     private String goods_id;
 
@@ -79,9 +78,6 @@ public class EvaluateListActivity extends BaseActivity implements PullLayout.OnR
         MyApplication.addActivity(this);
         x.view().inject(this);
         context = this;
-        EventBus.getDefault().register(this);
-        token = (String) SPUtils.get(context, "token", "");
-        token = EncodeUtils.base64Decode2String(token);
         leval = getIntent().getIntExtra("leval", 0);
         goods_id = getIntent().getStringExtra("goods_id");
         initViews();
@@ -212,7 +208,7 @@ public class EvaluateListActivity extends BaseActivity implements PullLayout.OnR
     private void commentList(final int state) {
         dialog.show();
         APIService userBiz = RetrofitWrapper.getInstance().create(APIService.class);
-        Call<BaseResponse<List<CommentContent>>> call = userBiz.commentList(token, goods_id, leval);
+        Call<BaseResponse<List<CommentContent>>> call = userBiz.commentList(goods_id, leval);
         call.enqueue(new Callback<BaseResponse<List<CommentContent>>>() {
             @Override
             public void onResponse(Call<BaseResponse<List<CommentContent>>> arg0,
@@ -285,7 +281,6 @@ public class EvaluateListActivity extends BaseActivity implements PullLayout.OnR
     @Override
     public void onDestroy() {
         super.onDestroy();
-        EventBus.getDefault().unregister(this);
     }
 
 
@@ -311,18 +306,4 @@ public class EvaluateListActivity extends BaseActivity implements PullLayout.OnR
         listView.setLayoutParams(params);
     }
 
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEventMain(LoginMsgEvent messageEvent) {
-        String login = (String) SPUtils.get(context, "login", "");
-        if (!StringUtils.isBlank(login) && login.equals(MyConstant.SUC_RESULT)) {// 已登录
-            MyConstant.HASLOGIN = true;
-            token = (String) SPUtils.get(context, "token", "");
-            token = EncodeUtils.base64Decode2String(token);
-            commentList(2);
-        } else {// 未登录
-            finish();
-            MyConstant.HASLOGIN = false;
-        }
-    }
 }

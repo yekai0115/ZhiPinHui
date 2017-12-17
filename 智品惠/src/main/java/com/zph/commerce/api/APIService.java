@@ -783,9 +783,9 @@ public interface APIService {
      * @param status 0  全部  1 好评  2  中评  3  差评
      * @return
      */
-    @POST("api/commentList")
+    @POST("common/commentList")
     @FormUrlEncoded
-    Call<BaseResponse<List<CommentContent>>> commentList(@Header("X-AUTH-TOKEN") String token, @Field("good_id") String good_id, @Field("status") int status);
+    Call<BaseResponse<List<CommentContent>>> commentList( @Field("good_id") String good_id, @Field("status") int status);
 
 
     /**

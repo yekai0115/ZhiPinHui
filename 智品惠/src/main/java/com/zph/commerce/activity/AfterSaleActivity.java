@@ -445,7 +445,7 @@ public class AfterSaleActivity extends BaseActivity implements AdapterView.OnIte
         new Thread(new Runnable() {
             @Override
             public void run() {
-                boolean flag = new PutObjectSamples(oss, MyConstant.ALI_BUCKET_RECOMMEND, key, path).putObjectFromLocalFile();
+                boolean flag = new PutObjectSamples(oss, MyConstant.ALI_PUBLIC_BUCKET_RECOMMEND, key, path).putObjectFromLocalFile();
                 if (flag) {//上传成功
                     runOnUiThread(new Runnable() {
                         @Override
