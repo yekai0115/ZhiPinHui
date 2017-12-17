@@ -29,7 +29,7 @@ public class WisdomOrderDetals implements Serializable {
     private String city;
     private String county;
     private String pay_return_id;
-
+    private String status;
     public String getId() {
         return id;
     }
@@ -112,5 +112,9 @@ public class WisdomOrderDetals implements Serializable {
 
     public String getPay_return_id() {
         return pay_return_id;
+    }
+
+    public String getStatus() {
+        return status;
     }
 }

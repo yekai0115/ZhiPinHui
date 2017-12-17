@@ -41,7 +41,7 @@
             android:layout_gravity="center"
             android:layout_marginRight="15dp"
             android:gravity="center|right"
-            android:textColor="@color/tv_color2"
+            android:textColor="@color/bg_main_bottom"
             android:textSize="@dimen/size_15" />
 
     </LinearLayout>
@@ -283,10 +283,10 @@
                     android:layout_height="28dp"
                     android:layout_marginLeft="15dp"
                     android:layout_toRightOf="@id/tv_wuliu"
-                    android:background="@drawable/guide_shape"
+                    android:background="@drawable/bg_style6"
                     android:gravity="center"
                     android:text="@string/tishi_48"
-                    android:textColor="@color/bg_main_bottom"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/size_13" />
 
 

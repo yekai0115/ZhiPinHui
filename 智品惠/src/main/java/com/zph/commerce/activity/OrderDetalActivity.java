@@ -346,7 +346,7 @@ public class OrderDetalActivity extends BaseActivity implements PullLayout.OnRef
                         tv_phone.setText(addr_info.getAddr_mobile());
                         tv_address.setText(addr_info.getAddr_province() + addr_info.getAddr_city() + addr_info.getAddr_county() + addr_info.getAddr_detail());
                         goodsInfoList = GsonUtil.jsonToList(goods_info.getGoods_info(), OrderGoodsInfo.class);
-                        adapter.updateListview(goodsInfoList,payData.getStatus());
+                        adapter.updateListview(goodsInfoList, payData.getStatus());
                         setListviewHeight(lv_Order);
                         tv_use_point.setText(goods_info.getNocan_points());
                         tv_shifu.setText(goods_info.getTotalprice());
@@ -363,9 +363,12 @@ public class OrderDetalActivity extends BaseActivity implements PullLayout.OnRef
                         } else if (status == 2) {//已发货
                             tv_order_state.setText("待收货");
                             btn_evaluate.setVisibility(View.GONE);
+                        } else if (status == 3) {//已收货，待评价
+                            tv_order_state.setText("待评价");
+                            btn_evaluate.setVisibility(View.VISIBLE);
                         } else {
                             tv_order_state.setText("已完成");
-                            btn_evaluate.setVisibility(View.VISIBLE);
+                            btn_evaluate.setVisibility(View.GONE);
                         }
                         if (StringUtils.isBlank(delivery_sn) || delivery_sn.equals("0")) {
                             stateLayout.showContentView();
@@ -395,7 +398,7 @@ public class OrderDetalActivity extends BaseActivity implements PullLayout.OnRef
 
     }
 
-    @Event({R.id.ll_wl, R.id.btn_operate})
+    @Event({R.id.ll_wl, R.id.btn_operate, R.id.btn_evaluate})
     private void click(View view) {
         switch (view.getId()) {
             case R.id.ll_wl://查看物流
@@ -403,6 +406,15 @@ public class OrderDetalActivity extends BaseActivity implements PullLayout.OnRef
                 break;
             case R.id.btn_operate:
                 queryDelivery();
+                break;
+            case R.id.btn_evaluate://评价
+                if (status == 3) {//待评价
+//                    intent = new Intent(mContext, EvaluateActivity.class);
+//                    intent.putExtra("order_sn", order_sn);//订单号
+//                    intent.putExtra("attr_id", goodsInfo.getAttr_id());//
+//                    intent.putExtra("good_id", goodsInfo.getGood_id());//
+                    startActivity(intent);
+                }
                 break;
         }
     }
@@ -467,9 +479,8 @@ public class OrderDetalActivity extends BaseActivity implements PullLayout.OnRef
     //换货申请提交成功
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEventMain(MsgEvent17 messageEvent) {
-            getOrderDetail(1);
+        getOrderDetail(1);
     }
-
 
 
     /**
@@ -500,11 +511,11 @@ public class OrderDetalActivity extends BaseActivity implements PullLayout.OnRef
             String goods_logo = orderGoodsInfo.getPic();
             String[] arr = goods_logo.split(",");
             intent = new Intent(mContext, AfterSaleActivity.class);
-            intent.putExtra("value",orderGoodsInfo.getValue());
-            intent.putExtra("order_sn",order_sn);
-            intent.putExtra("name",orderGoodsInfo.getName());
-            intent.putExtra("attr_id",orderGoodsInfo.getAttr_id());
-            intent.putExtra("pic",MyConstant.ALI_PUBLIC_URL + arr[0]);
+            intent.putExtra("value", orderGoodsInfo.getValue());
+            intent.putExtra("order_sn", order_sn);
+            intent.putExtra("name", orderGoodsInfo.getName());
+            intent.putExtra("attr_id", orderGoodsInfo.getAttr_id());
+            intent.putExtra("pic", MyConstant.ALI_PUBLIC_URL + arr[0]);
             startActivity(intent);
         }
 

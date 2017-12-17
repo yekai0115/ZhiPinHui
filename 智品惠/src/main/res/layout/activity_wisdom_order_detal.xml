@@ -73,11 +73,24 @@
                         android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:background="@color/bg_main_bottom"
+                        android:background="@color/bg_main_bottom4"
                         android:gravity="center"
                         android:text="@string/tishi_47"
-                        android:textColor="@color/white"
+                        android:textColor="@color/bg_main_bottom"
                         android:textSize="@dimen/size_16" />
+
+
+                    <Button
+                        android:id="@+id/btn_evaluate"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:background="@color/bg_main_bottom"
+                        android:gravity="center"
+                        android:text="@string/tishi_94"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/size_16"
+                        android:visibility="gone"/>
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>
@@ -341,7 +354,7 @@
 
                                 <LinearLayout
                                     android:layout_width="fill_parent"
-                                    android:layout_height="fill_parent"
+                                    android:layout_height="wrap_content"
                                     android:layout_marginBottom="15dp"
                                     android:layout_marginLeft="11dp"
                                     android:layout_marginTop="13dp"
@@ -434,6 +447,21 @@
 
 
                                     </LinearLayout>
+                                    <TextView
+                                        android:id="@+id/tv_after_sale"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="30dp"
+                                        android:paddingLeft="12.5dp"
+                                        android:paddingRight="12.5dp"
+                                        android:gravity="center|right"
+                                        android:layout_marginRight="15dp"
+                                        android:layout_marginTop="7dp"
+                                        android:textSize="@dimen/size_13"
+                                        android:textColor="@color/color32"
+                                        android:background="@drawable/bg_search_gray"
+                                        android:layout_gravity="center|right"
+                                        android:text="申请售后"
+                                        />
                                 </LinearLayout>
                             </LinearLayout>
 

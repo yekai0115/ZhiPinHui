@@ -10,6 +10,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.zph.commerce.R;
+import com.zph.commerce.activity.EvaluateActivity;
 import com.zph.commerce.activity.OrderWuliuActivity;
 import com.zph.commerce.activity.WisdomOrderDetalActivity;
 import com.zph.commerce.adapter.WisdomOrderAdapter;
@@ -278,6 +279,7 @@ public class WisdomOrderFrament extends BaseFragment implements PullLayout.OnRef
     public void onClick(View item, View widget, int position, int which) {
         OrderInfo orderInfo = orderInfoList.get(position);
         String order_sn = orderInfo.getOrder_sn();
+        int status = orderInfo.getStatus();
         String goods = orderInfo.getGoods_info();
         OrderGoodsInfo goodsInfo = GsonUtil.GsonToBean(goods, OrderGoodsInfo.class);
         String goods_logo = goodsInfo.getPic();
@@ -293,11 +295,18 @@ public class WisdomOrderFrament extends BaseFragment implements PullLayout.OnRef
                 startActivity(intent);
                 break;
             case R.id.tv_shouhuo://立即收货
-                showConfirmReceiptDialog(order_sn);
+                if (status == 2) {//待收货
+                    showConfirmReceiptDialog(order_sn);
+                } else if (status == 3) {//待评价
+                    intent = new Intent(context, EvaluateActivity.class);
+                    intent.putExtra("order_sn", order_sn);//订单号
+                    intent.putExtra("attr_id", goodsInfo.getAttr_id());//
+                    intent.putExtra("good_id", goodsInfo.getGood_id());//
+                    startActivity(intent);
+                }
                 break;
             case R.id.ll_detal://查看详情
-                int status= orderInfo.getStatus();
-                if(status==0){
+                if(status==0){//购买订单
                     return;
                 }
                 intent = new Intent(context, WisdomOrderDetalActivity.class);

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ import com.zph.commerce.bean.OrderGoodsInfo;
 import com.zph.commerce.bean.WisdomOrderDetals;
 import com.zph.commerce.constant.MyConstant;
 import com.zph.commerce.eventbus.LoginMsgEvent;
+import com.zph.commerce.eventbus.MsgEvent17;
 import com.zph.commerce.http.HttpCallBack;
 import com.zph.commerce.utils.DateUtil;
 import com.zph.commerce.utils.EncodeUtils;
@@ -48,316 +50,387 @@ import retrofit2.Response;
 
 /**
  * 描述 ：智品订单详情页面
- * 
  */
-public class WisdomOrderDetalActivity extends BaseActivity implements PullLayout.OnRefreshListener{
+public class WisdomOrderDetalActivity extends BaseActivity implements PullLayout.OnRefreshListener {
 
 
-
-	/** 实付款*/
-	@ViewInject(R.id.tv_shifukuan)
-	private TextView tv_shifukuan;
-	/** 查看物流、立即收货*/
-	@ViewInject(R.id.btn_operate)
-	private TextView btn_operate;
-	/**订单状态*/
-	@ViewInject(R.id.tv_order_state)
-	private TextView tv_order_state;
-
-
-	/**收件人姓名*/
-	@ViewInject(R.id.tv_sh_name)
-	private TextView tv_sh_name;
-	/**收件人电话*/
-	@ViewInject(R.id.tv_phone)
-	private TextView tv_phone;
-	/**收件人地址*/
-	@ViewInject(R.id.tv_address)
-	private TextView tv_address;
+    /**
+     * 实付款
+     */
+    @ViewInject(R.id.tv_shifukuan)
+    private TextView tv_shifukuan;
+    /**
+     * 查看物流、立即收货
+     */
+    @ViewInject(R.id.btn_operate)
+    private TextView btn_operate;
+    /**
+     * 订单状态
+     */
+    @ViewInject(R.id.tv_order_state)
+    private TextView tv_order_state;
 
 
-	/**最新物流状态*/
-	@ViewInject(R.id.tv_wl_state)
-	private TextView tv_wl_state;
-	/**最新物流状态*/
-	@ViewInject(R.id.tv_wl_content)
-	private TextView tv_wl_content;
-	/**最新物流状态*/
-	@ViewInject(R.id.tv_wl_time)
-	private TextView tv_wl_time;
+    /**
+     * 收件人姓名
+     */
+    @ViewInject(R.id.tv_sh_name)
+    private TextView tv_sh_name;
+    /**
+     * 收件人电话
+     */
+    @ViewInject(R.id.tv_phone)
+    private TextView tv_phone;
+    /**
+     * 收件人地址
+     */
+    @ViewInject(R.id.tv_address)
+    private TextView tv_address;
 
 
-	/** 商品图片 */
-	@ViewInject(R.id.iv_goods_pic)
-	private ImageView iv_goods_pic;
-
-	/**商品标题*/
-	@ViewInject(R.id.tv_goodsTitle)
-	private TextView tv_goodsTitle;
-	/**商品规格*/
-	@ViewInject(R.id.tv_guige)
-	private TextView tv_guige;
-	/**商品单价*/
-	@ViewInject(R.id.tv_goods_danjia)
-	private TextView tv_goods_danjia;
-	/**商品积分*/
-	@ViewInject(R.id.tv_goods_point)
-	private TextView tv_goods_point;
-	/**商品数量*/
-	@ViewInject(R.id.tv_num)
-	private TextView tv_num;
+    /**
+     * 最新物流状态
+     */
+    @ViewInject(R.id.tv_wl_state)
+    private TextView tv_wl_state;
+    /**
+     * 最新物流状态
+     */
+    @ViewInject(R.id.tv_wl_content)
+    private TextView tv_wl_content;
+    /**
+     * 最新物流状态
+     */
+    @ViewInject(R.id.tv_wl_time)
+    private TextView tv_wl_time;
 
 
-	/**商品运费*/
-	@ViewInject(R.id.tv_yunfei)
-	private TextView tv_yunfei;
+    /**
+     * 商品图片
+     */
+    @ViewInject(R.id.iv_goods_pic)
+    private ImageView iv_goods_pic;
+
+    /**
+     * 商品标题
+     */
+    @ViewInject(R.id.tv_goodsTitle)
+    private TextView tv_goodsTitle;
+    /**
+     * 商品规格
+     */
+    @ViewInject(R.id.tv_guige)
+    private TextView tv_guige;
+    /**
+     * 商品单价
+     */
+    @ViewInject(R.id.tv_goods_danjia)
+    private TextView tv_goods_danjia;
+    /**
+     * 商品积分
+     */
+    @ViewInject(R.id.tv_goods_point)
+    private TextView tv_goods_point;
+    /**
+     * 商品数量
+     */
+    @ViewInject(R.id.tv_num)
+    private TextView tv_num;
 
 
-	/**实付金额*/
-	@ViewInject(R.id.tv_shifu)
-	private TextView tv_shifu;
-	/**订单号*/
-	@ViewInject(R.id.tv_order_id)
-	private TextView tv_order_id;
-	/**交易号*/
-	@ViewInject(R.id.tv_trade_id)
-	private TextView tv_trade_id;
-	/**下单时间*/
-	@ViewInject(R.id.tv_buy_time)
-	private TextView tv_buy_time;
-	/**支付时间*/
-	@ViewInject(R.id.tv_pay_time)
-	private TextView tv_pay_time;
-	/**发货时间*/
-	@ViewInject(R.id.tv_fahuo_time)
-	private TextView tv_fahuo_time;
-
-	@ViewInject(R.id.refresh_view)
-	private PullLayout refresh_view;
-	@ViewInject(R.id.mScrollView)
-	private PullableRefreshScrollView mScrollView;
+    /**
+     * 商品运费
+     */
+    @ViewInject(R.id.tv_yunfei)
+    private TextView tv_yunfei;
 
 
-	@ViewInject(R.id.stateLayout)
-	private StateLayout stateLayout;
+    /**
+     * 实付金额
+     */
+    @ViewInject(R.id.tv_shifu)
+    private TextView tv_shifu;
+    /**
+     * 订单号
+     */
+    @ViewInject(R.id.tv_order_id)
+    private TextView tv_order_id;
+    /**
+     * 交易号
+     */
+    @ViewInject(R.id.tv_trade_id)
+    private TextView tv_trade_id;
+    /**
+     * 下单时间
+     */
+    @ViewInject(R.id.tv_buy_time)
+    private TextView tv_buy_time;
+    /**
+     * 支付时间
+     */
+    @ViewInject(R.id.tv_pay_time)
+    private TextView tv_pay_time;
+    /**
+     * 发货时间
+     */
+    @ViewInject(R.id.tv_fahuo_time)
+    private TextView tv_fahuo_time;
+
+    @ViewInject(R.id.refresh_view)
+    private PullLayout refresh_view;
+    @ViewInject(R.id.mScrollView)
+    private PullableRefreshScrollView mScrollView;
 
 
-	@ViewInject(R.id.ll_wl)
-	private LinearLayout ll_wl;
+    @ViewInject(R.id.stateLayout)
+    private StateLayout stateLayout;
 
-	/** 上下文 **/
-	private Context mContext;
+    @ViewInject(R.id.tv_after_sale)
+    private TextView tv_after_sale;
 
-	private Intent intent;
-	/**订单号*/
-	private String order_sn;
-	/**
-	 * 订单状态
-	 */
-	private int status;
-	/**
-	 * 物流单号
-	 */
-	private String delivery_sn;
-	private String token;
-	private OrderGoodsInfo goodsInfo;
-	private String goods_logo;
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_wisdom_order_detal);
-		mContext = this;
-		x.view().inject(this);
-		EventBus.getDefault().register(this);
-		initDialog();
-		intent = getIntent();
-		status= intent.getIntExtra("status",0);
-		order_sn= intent.getStringExtra("order_sn");
-		delivery_sn= intent.getStringExtra("delivery_sn");
-		goods_logo= intent.getStringExtra("goods_logo");
-		token = (String) SPUtils.get(mContext, "token", "");
-		token = EncodeUtils.base64Decode2String(token);
-		refresh_view.setOnRefreshListener(this);
-		initViews();
+    @ViewInject(R.id.btn_evaluate)
+    private Button btn_evaluate;
+
+    @ViewInject(R.id.ll_wl)
+    private LinearLayout ll_wl;
+
+    /**
+     * 上下文
+     **/
+    private Context mContext;
+
+    private Intent intent;
+    /**
+     * 订单号
+     */
+    private String order_sn;
+    /**
+     * 订单状态
+     */
+    private int deli_status;
+    /**
+     * 物流单号
+     */
+    private String delivery_sn;
+    private String token;
+    private OrderGoodsInfo goodsInfo;
+    private String goods_logo;
+    private WisdomOrderDetals orderDetals;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_wisdom_order_detal);
+        mContext = this;
+        x.view().inject(this);
+        EventBus.getDefault().register(this);
+        initDialog();
+        intent = getIntent();
+        deli_status = intent.getIntExtra("status", 0);
+        order_sn = intent.getStringExtra("order_sn");
+        delivery_sn = intent.getStringExtra("delivery_sn");
+        goods_logo = intent.getStringExtra("goods_logo");
+        token = (String) SPUtils.get(mContext, "token", "");
+        token = EncodeUtils.base64Decode2String(token);
+        refresh_view.setOnRefreshListener(this);
+        initViews();
         getOrderDetail(1);
-		mScrollView.smoothScrollTo(0, 0);//避免
-		tv_order_id.setText(order_sn);
-	}
+        mScrollView.smoothScrollTo(0, 0);//避免
+        tv_order_id.setText(order_sn);
+    }
 
 
-	@Override
-	protected void initEvents() {
+    @Override
+    protected void initEvents() {
 
-	}
+    }
 
 
-	@Override
-	public void onRefresh(PullLayout pullToRefreshLayout) {
-		getOrderDetail(2);
-	}
+    @Override
+    public void onRefresh(PullLayout pullToRefreshLayout) {
+        getOrderDetail(2);
+    }
 
-	@Override
-	public void onLoadMore(PullLayout pullToRefreshLayout) {
+    @Override
+    public void onLoadMore(PullLayout pullToRefreshLayout) {
 
-	}
+    }
 
-	@Override
-	protected void initViews() {
-		TopNvgBar5 topNvgBar = (TopNvgBar5) findViewById(R.id.top_nvg_bar);
-		topNvgBar.setMyOnClickListener(new TopNvgBar5.MyOnClickListener() {
-			@Override
-			public void onLeftClick() {
-					finish();
-			}
+    @Override
+    protected void initViews() {
+        TopNvgBar5 topNvgBar = (TopNvgBar5) findViewById(R.id.top_nvg_bar);
+        topNvgBar.setMyOnClickListener(new TopNvgBar5.MyOnClickListener() {
+            @Override
+            public void onLeftClick() {
+                finish();
+            }
 
-			@Override
-			public void onRightClick() {
+            @Override
+            public void onRightClick() {
 
-			}
-		});
-		stateLayout.setEmptyAction(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
+            }
+        });
+        stateLayout.setEmptyAction(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 getOrderDetail(1);
-			}
-		});
-		stateLayout.setErrorAction(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-			 getOrderDetail(1);
-			}
-		});
-	}
+            }
+        });
+        stateLayout.setErrorAction(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getOrderDetail(1);
+            }
+        });
+    }
 
-	/**
-	 * 查询物流
-	 */
-	private void getOrderWl() {
+    /**
+     * 查询物流
+     */
+    private void getOrderWl() {
 
-		dialog.show();
-		APIService userBiz = RetrofitWrapper.getInstance().create(APIService.class);
-		Call<Object> call =userBiz.getExpressInfomation(order_sn);
-		call.enqueue(new Callback<Object>() {
-//LogisticsBase
-			@Override
-			public void onResponse(Call<Object> arg0,
-								   Response<Object> response) {
-				dialog.dismiss();
-				stateLayout.showContentView();
-				Object baseResponse=response.body();
-				if(null==baseResponse|| StringUtils.isBlank(baseResponse.toString())){
-					tv_wl_state.setText("处理中");
-					tv_wl_content.setText("订单正在处理中");
-					tv_wl_time.setText(DateUtil.getStandardTime(System.currentTimeMillis()));
-				}else{
-					try{
-						String json=GsonUtil.GsonString(baseResponse);
-						LogisticsBase logisticsBase=GsonUtil.GsonToBean(json,LogisticsBase.class);
-						Logistics logistics = logisticsBase.getList().get(0);
-						switch (logisticsBase.getDeliverystatus()){
-							case  1 :
-								tv_wl_state.setText("在途中");
-								break;
-							case  2:
-								tv_wl_state.setText("派件中");
-								break;
-							case  3 :
-								tv_wl_state.setText("已签收");
-								break;
-							case  4 :
-								tv_wl_state.setText("派送失败");
-								break;
+        dialog.show();
+        APIService userBiz = RetrofitWrapper.getInstance().create(APIService.class);
+        Call<Object> call = userBiz.getExpressInfomation(order_sn);
+        call.enqueue(new Callback<Object>() {
+            //LogisticsBase
+            @Override
+            public void onResponse(Call<Object> arg0,
+                                   Response<Object> response) {
+                dialog.dismiss();
+                stateLayout.showContentView();
+                Object baseResponse = response.body();
+                if (null == baseResponse || StringUtils.isBlank(baseResponse.toString())) {
+                    tv_wl_state.setText("处理中");
+                    tv_wl_content.setText("订单正在处理中");
+                    tv_wl_time.setText(DateUtil.getStandardTime(System.currentTimeMillis()));
+                } else {
+                    try {
+                        String json = GsonUtil.GsonString(baseResponse);
+                        LogisticsBase logisticsBase = GsonUtil.GsonToBean(json, LogisticsBase.class);
+                        Logistics logistics = logisticsBase.getList().get(0);
+                        switch (logisticsBase.getDeliverystatus()) {
+                            case 1:
+                                tv_wl_state.setText("在途中");
+                                break;
+                            case 2:
+                                tv_wl_state.setText("派件中");
+                                break;
+                            case 3:
+                                tv_wl_state.setText("已签收");
+                                break;
+                            case 4:
+                                tv_wl_state.setText("派送失败");
+                                break;
 
-						}
-						tv_wl_content.setText(logistics.getStatus());
-						tv_wl_time.setText(logistics.getTime());
-					}catch (Exception e){
-						e.printStackTrace();
-					}
+                        }
+                        tv_wl_content.setText(logistics.getStatus());
+                        tv_wl_time.setText(logistics.getTime());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
 
-				}
-			}
+                }
+            }
 
-			@Override
-			public void onFailure(Call<Object> arg0, Throwable arg1) {
-				dialog.dismiss();
-				ToastUtil.showToast(mContext, "请检查你的网络设置");
-			}
-		});
+            @Override
+            public void onFailure(Call<Object> arg0, Throwable arg1) {
+                dialog.dismiss();
+                ToastUtil.showToast(mContext, "请检查你的网络设置");
+            }
+        });
 
-	}
+    }
+
     /**
      * 查询订单详细
      */
     private void getOrderDetail(final int state) {
         dialog.show();
-		if(state==1){
-			stateLayout.showProgressView();
-		}
+        if (state == 1) {
+            stateLayout.showProgressView();
+        }
         APIService userBiz = RetrofitWrapper.getInstance().create(APIService.class);
-        Call<BaseResponse<List<WisdomOrderDetals>>> call =userBiz.myOrdersDetail(token,order_sn);
+        Call<BaseResponse<List<WisdomOrderDetals>>> call = userBiz.myOrdersDetail(token, order_sn);
         call.enqueue(new HttpCallBack<BaseResponse<List<WisdomOrderDetals>>>() {
 
             @Override
             public void onResponse(Call<BaseResponse<List<WisdomOrderDetals>>> arg0,
                                    Response<BaseResponse<List<WisdomOrderDetals>>> response) {
                 dialog.dismiss();
-				if(state==2){
-					refresh_view.refreshFinish(PullLayout.SUCCEED);
-				}
-				super.onResponse(arg0,response);
-                BaseResponse<List<WisdomOrderDetals>> baseResponse=response.body();
+                if (state == 2) {
+                    refresh_view.refreshFinish(PullLayout.SUCCEED);
+                }
+                super.onResponse(arg0, response);
+                BaseResponse<List<WisdomOrderDetals>> baseResponse = response.body();
                 if (null != baseResponse) {
                     String msg = baseResponse.getMsg();
                     int code = baseResponse.getCode();
                     if (code == MyConstant.SUCCESS) {
-						List<WisdomOrderDetals> wisdomOrderDetalsList=baseResponse.getData();
-						if(null==wisdomOrderDetalsList||wisdomOrderDetalsList.isEmpty()){
-							stateLayout.showEmptyView("暂无数据");
-							return;
-						}
-
-
-						WisdomOrderDetals orderDetals=baseResponse.getData().get(0);
-
+                        List<WisdomOrderDetals> wisdomOrderDetalsList = baseResponse.getData();
+                        if (null == wisdomOrderDetalsList || wisdomOrderDetalsList.isEmpty()) {
+                            stateLayout.showEmptyView("暂无数据");
+                            return;
+                        }
+                        orderDetals = baseResponse.getData().get(0);
                         tv_sh_name.setText(orderDetals.getAddr_name());
                         tv_phone.setText(orderDetals.getAddr_mobile());
-                        tv_address.setText(orderDetals.getProvince()+orderDetals.getCity()+orderDetals.getCounty() +orderDetals.getAddr_detail());
-						goodsInfo = GsonUtil.GsonToBean(orderDetals.getGoods_info(),OrderGoodsInfo.class);
-						Glide.with(mContext).load(MyConstant.ALI_PUBLIC_URL + goods_logo).fitCenter()
+                        tv_address.setText(orderDetals.getProvince() + orderDetals.getCity() + orderDetals.getCounty() + orderDetals.getAddr_detail());
+                        goodsInfo = GsonUtil.GsonToBean(orderDetals.getGoods_info(), OrderGoodsInfo.class);
+                        Glide.with(mContext).load(MyConstant.ALI_PUBLIC_URL + goods_logo).fitCenter()
                                 //  .override(width,DimenUtils.dip2px(context,130))
                                 .placeholder(R.drawable.pic_nomal_loading_style).error(R.drawable.pic_nomal_loading_style).into(iv_goods_pic);
                         tv_goodsTitle.setText(goodsInfo.getName());
                         tv_guige.setText(goodsInfo.getValue());
                         tv_goods_danjia.setText(goodsInfo.getPrice());
-                        tv_num.setText("x"+goodsInfo.getNumber());
+                        tv_num.setText("x" + goodsInfo.getNumber());
                         tv_yunfei.setText(orderDetals.getPostage());
                         tv_shifu.setText(orderDetals.getTotalprice());
-						tv_shifukuan.setText(orderDetals.getTotalprice());
-						tv_buy_time.setText(orderDetals.getBuildtime());
-						tv_order_id.setText(orderDetals.getOrder_sn());
-						tv_trade_id.setText(orderDetals.getPay_return_id());
-						tv_pay_time.setText(orderDetals.getPay_time());
-						tv_fahuo_time.setText(orderDetals.getDeli_time());
-						status=orderDetals.getDeli_status();
-						if (status==1) {//未发货
-							tv_order_state.setText("待发货");
-						} else if (status==2) {//已发货
-							tv_order_state.setText("待收货");
-						}else{
-							tv_order_state.setText("已完成");
-						}
-						if (StringUtils.isBlank(delivery_sn)||delivery_sn.equals("0")){
-							stateLayout.showContentView();
-							tv_wl_state.setText("处理中");
-							tv_wl_content.setText("订单正在处理中");
-							tv_wl_time.setText(DateUtil.getStandardTime(System.currentTimeMillis()));
-							return;
-						}
-						getOrderWl();
-                    }else{
-						stateLayout.showEmptyView(msg);
-					}
+                        tv_shifukuan.setText(orderDetals.getTotalprice());
+                        tv_buy_time.setText(orderDetals.getBuildtime());
+                        tv_order_id.setText(orderDetals.getOrder_sn());
+                        tv_trade_id.setText(orderDetals.getPay_return_id());
+                        tv_pay_time.setText(orderDetals.getPay_time());
+                        tv_fahuo_time.setText(orderDetals.getDeli_time());
+                        deli_status = orderDetals.getDeli_status();
+                        if (deli_status == 1) {//未发货
+                            tv_order_state.setText("待发货");
+                            tv_after_sale.setVisibility(View.GONE);
+                            btn_evaluate.setVisibility(View.GONE);
+                        } else {
+                            if (deli_status == 2) {//已发货
+                                tv_order_state.setText("待收货");
+                                btn_evaluate.setVisibility(View.GONE);
+                            }else if (deli_status == 3) {//已收货，待评价
+                                tv_order_state.setText("待评价");
+                                btn_evaluate.setVisibility(View.VISIBLE);
+                            } else {//已收货，已评价
+                                tv_order_state.setText("已完成");
+                                btn_evaluate.setVisibility(View.GONE);
+                            }
+                            tv_after_sale.setVisibility(View.VISIBLE);
+                            String after_sale_status = orderDetals.getStatus();
+                            if (StringUtils.isBlank(after_sale_status)) {
+                                tv_after_sale.setText("申请售后");
+                            } else if (after_sale_status.equals("0")) {//售后申请中
+                                tv_after_sale.setText("售后申请中");
+                            } else if (after_sale_status.equals("1")) {//售后完成
+                                tv_after_sale.setText("售后完成");
+                            } else if (after_sale_status.equals("2")) {//换货失败
+                                tv_after_sale.setText("换货失败");
+                            }
+                        }
+                        if (StringUtils.isBlank(delivery_sn) || delivery_sn.equals("0")) {
+                            stateLayout.showContentView();
+                            tv_wl_state.setText("处理中");
+                            tv_wl_content.setText("订单正在处理中");
+                            tv_wl_time.setText(DateUtil.getStandardTime(System.currentTimeMillis()));
+                            return;
+                        }
+                        getOrderWl();
+                    } else {
+                        stateLayout.showEmptyView(msg);
+                    }
                 }
 
             }
@@ -367,80 +440,105 @@ public class WisdomOrderDetalActivity extends BaseActivity implements PullLayout
                 dialog.dismiss();
                 ToastUtil.showToast(mContext, "请检查你的网络设置");
                 stateLayout.showErrorView("请检查你的网络设置");
-				if(state==2){
-					refresh_view.refreshFinish(PullLayout.FAIL);
-				}
+                if (state == 2) {
+                    refresh_view.refreshFinish(PullLayout.FAIL);
+                }
             }
         });
 
     }
 
-	@Event({R.id.ll_wl,R.id.btn_operate})
-	private void click(View view) {
-		switch (view.getId()){
-			case R.id.ll_wl:
-				queryDelivery();
-				break;
-			case R.id.btn_operate:
-				queryDelivery();
-				break;
-		}
-	}
+    @Event({R.id.ll_wl, R.id.btn_operate, R.id.tv_after_sale, R.id.btn_evaluate})
+    private void click(View view) {
+        switch (view.getId()) {
+            case R.id.ll_wl:
+                queryDelivery();
+                break;
+            case R.id.btn_operate:
+                queryDelivery();
+                break;
+            case R.id.tv_after_sale://售后
+                String status = orderDetals.getStatus();
+                if (StringUtils.isBlank(status)) {//申请售后
+                    String goods_logo = goodsInfo.getPic();
+                    String[] arr = goods_logo.split(",");
+                    intent = new Intent(mContext, AfterSaleActivity.class);
+                    intent.putExtra("value", goodsInfo.getValue());
+                    intent.putExtra("order_sn", order_sn);
+                    intent.putExtra("name", goodsInfo.getName());
+                    intent.putExtra("attr_id", goodsInfo.getAttr_id());
+                    intent.putExtra("pic", MyConstant.ALI_PUBLIC_URL + arr[0]);
+                    startActivity(intent);
+                }
+                break;
+            case R.id.btn_evaluate://立即评价
+                if(deli_status==3){
+                    intent = new Intent(mContext, EvaluateActivity.class);
+                    intent.putExtra("order_sn", order_sn);//订单号
+                    intent.putExtra("attr_id", goodsInfo.getAttr_id());//
+                    intent.putExtra("good_id", goodsInfo.getGood_id());//
+                }
+                break;
+        }
+    }
 
-	private void queryDelivery(){
-		if (StringUtils.isBlank(delivery_sn)||delivery_sn.equals("0")){
-			ToastUtil.showToast(mContext, "暂无物流信息");
-			return;
-		}
-		Intent intent = new Intent();
-		intent.putExtra("delivery_sn", delivery_sn);//物流单号
-		intent.putExtra("goods_logo", goods_logo);
-		intent.putExtra("order_sn", order_sn);
-		intent.setClass(WisdomOrderDetalActivity.this,OrderWuliuActivity.class);
-		startActivity(intent);
-	}
-
-
-
-	
-	@Override
-	protected void onResume() {
-		super.onResume();
-
-	}
-
-	@Override
-	protected void onPause() {
-		super.onPause();
-
-	}
-
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			finish();	
-		}
-		return super.onKeyDown(keyCode, event);
-	}
-
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-		EventBus.getDefault().unregister(this);
-	}
+    private void queryDelivery() {
+        if (StringUtils.isBlank(delivery_sn) || delivery_sn.equals("0")) {
+            ToastUtil.showToast(mContext, "暂无物流信息");
+            return;
+        }
+        Intent intent = new Intent();
+        intent.putExtra("delivery_sn", delivery_sn);//物流单号
+        intent.putExtra("goods_logo", goods_logo);
+        intent.putExtra("order_sn", order_sn);
+        intent.setClass(WisdomOrderDetalActivity.this, OrderWuliuActivity.class);
+        startActivity(intent);
+    }
 
 
-	@Subscribe(threadMode = ThreadMode.MAIN)
-	public void onMessageEventMain(LoginMsgEvent messageEvent) {
-		String login = (String) SPUtils.get(mContext, "login", "");
-		if (!StringUtils.isBlank(login) && login.equals(MyConstant.SUC_RESULT)) {// 已登录
-			MyConstant.HASLOGIN = true;
-			token = (String) SPUtils.get(mContext, "token", "");
-			token = EncodeUtils.base64Decode2String(token);
-			getOrderDetail(1);
-		} else {// 未登录
-			finish();
-			MyConstant.HASLOGIN = false;
-		}
-	}
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
+    //换货申请提交成功
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEventMain(MsgEvent17 messageEvent) {
+        getOrderDetail(1);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEventMain(LoginMsgEvent messageEvent) {
+        String login = (String) SPUtils.get(mContext, "login", "");
+        if (!StringUtils.isBlank(login) && login.equals(MyConstant.SUC_RESULT)) {// 已登录
+            MyConstant.HASLOGIN = true;
+            token = (String) SPUtils.get(mContext, "token", "");
+            token = EncodeUtils.base64Decode2String(token);
+            getOrderDetail(1);
+        } else {// 未登录
+            finish();
+            MyConstant.HASLOGIN = false;
+        }
+    }
 }
