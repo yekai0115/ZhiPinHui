@@ -21,6 +21,7 @@ import com.zph.commerce.bean.OrderGoodsInfo;
 import com.zph.commerce.bean.WisdomOrderDetals;
 import com.zph.commerce.constant.MyConstant;
 import com.zph.commerce.eventbus.LoginMsgEvent;
+import com.zph.commerce.eventbus.MsgEvent16;
 import com.zph.commerce.eventbus.MsgEvent17;
 import com.zph.commerce.http.HttpCallBack;
 import com.zph.commerce.utils.DateUtil;
@@ -464,6 +465,7 @@ public class WisdomOrderDetalActivity extends BaseActivity implements PullLayout
                     String[] arr = goods_logo.split(",");
                     intent = new Intent(mContext, AfterSaleActivity.class);
                     intent.putExtra("value", goodsInfo.getValue());
+                    intent.putExtra("order_type", 2);
                     intent.putExtra("order_sn", order_sn);
                     intent.putExtra("name", goodsInfo.getName());
                     intent.putExtra("attr_id", goodsInfo.getAttr_id());
@@ -476,7 +478,6 @@ public class WisdomOrderDetalActivity extends BaseActivity implements PullLayout
                     intent = new Intent(mContext, EvaluateActivity.class);
                     intent.putExtra("order_sn", order_sn);//订单号
                     intent.putExtra("attr_id", goodsInfo.getAttr_id());//
-                    intent.putExtra("good_id", goodsInfo.getGood_id());//
                 }
                 break;
         }
@@ -525,6 +526,11 @@ public class WisdomOrderDetalActivity extends BaseActivity implements PullLayout
     //换货申请提交成功
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEventMain(MsgEvent17 messageEvent) {
+        getOrderDetail(1);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEventMain(MsgEvent16 messageEvent) {
         getOrderDetail(1);
     }
 

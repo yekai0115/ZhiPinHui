@@ -60,7 +60,6 @@ public class EvaluateActivity extends BaseActivity {
         mContext = this;
         token = (String) SPUtils.get(mContext, "token", "");
         token = EncodeUtils.base64Decode2String(token);
-        good_id = getIntent().getStringExtra("good_id");
         attr_id = getIntent().getStringExtra("attr_id");
         order_sn = getIntent().getStringExtra("order_sn");
         initViews();
@@ -129,7 +128,7 @@ public class EvaluateActivity extends BaseActivity {
             content = "";
         }
         APIService userBiz = RetrofitWrapper.getInstance().create(APIService.class);
-        Call<BaseResponse<Object>> call = userBiz.submitComment(token, good_id, attr_id, order_sn, content, level);
+        Call<BaseResponse<Object>> call = userBiz.submitComment(token, attr_id, order_sn, content, level);
         call.enqueue(new HttpCallBack<BaseResponse<Object>>() {
 
             @Override

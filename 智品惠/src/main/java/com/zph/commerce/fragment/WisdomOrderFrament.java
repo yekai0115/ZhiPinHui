@@ -23,6 +23,7 @@ import com.zph.commerce.constant.MyConstant;
 import com.zph.commerce.dialog.DialogConfirm;
 import com.zph.commerce.dialog.LoadingDialog;
 import com.zph.commerce.eventbus.LoginMsgEvent;
+import com.zph.commerce.eventbus.MsgEvent16;
 import com.zph.commerce.eventbus.ToGeRenMsgEvent;
 import com.zph.commerce.http.HttpCallBack;
 import com.zph.commerce.interfaces.ListItemClickHelp;
@@ -301,7 +302,6 @@ public class WisdomOrderFrament extends BaseFragment implements PullLayout.OnRef
                     intent = new Intent(context, EvaluateActivity.class);
                     intent.putExtra("order_sn", order_sn);//订单号
                     intent.putExtra("attr_id", goodsInfo.getAttr_id());//
-                    intent.putExtra("good_id", goodsInfo.getGood_id());//
                     startActivity(intent);
                 }
                 break;
@@ -400,6 +400,12 @@ public class WisdomOrderFrament extends BaseFragment implements PullLayout.OnRef
                 ToastUtil.showToast(context, "网络状态不佳,请检查您的网络设置");
             }
         });
+    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEventMain(MsgEvent16 messageEvent) {
+        getOrderList(2);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

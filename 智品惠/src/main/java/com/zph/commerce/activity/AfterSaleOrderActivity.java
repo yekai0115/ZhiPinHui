@@ -57,7 +57,7 @@ public class AfterSaleOrderActivity extends BaseActivity implements PullLayout.O
     private AfterSaleOrderAdapter adapter;
     private List<AfterSaleGoodsInfo> orderInfoList = new ArrayList<AfterSaleGoodsInfo>();
     private String token;
-
+    private int order_type;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,6 +69,7 @@ public class AfterSaleOrderActivity extends BaseActivity implements PullLayout.O
         EventBus.getDefault().register(this);
         token = (String) SPUtils.get(context, "token", "");
         token = EncodeUtils.base64Decode2String(token);
+        order_type=getIntent().getIntExtra("order_type",1);
         initViews();
         initDialog();
         getOrderList(1);
@@ -136,7 +137,7 @@ public class AfterSaleOrderActivity extends BaseActivity implements PullLayout.O
     private void getOrderList(final int state) {
         dialog.show();
         APIService userBiz = RetrofitWrapper.getInstance().create(APIService.class);
-        Call<BaseResponse<List<AfterSaleGoodsInfo>>> call = userBiz.exchangeGoodList(token);
+        Call<BaseResponse<List<AfterSaleGoodsInfo>>> call = userBiz.exchangeGoodList(token,order_type);
         call.enqueue(new Callback<BaseResponse<List<AfterSaleGoodsInfo>>>() {
             @Override
             public void onResponse(Call<BaseResponse<List<AfterSaleGoodsInfo>>> arg0,

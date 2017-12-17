@@ -774,7 +774,7 @@ public interface APIService {
      */
     @POST("api/submitComment")
     @FormUrlEncoded
-    Call<BaseResponse<Object>> submitComment(@Header("X-AUTH-TOKEN") String token, @Field("good_id") String good_id, @Field("attr_id") String attr_id, @Field("order_sn") String order_sn, @Field("comment") String comment, @Field("level") int level);
+    Call<BaseResponse<Object>> submitComment(@Header("X-AUTH-TOKEN") String token,@Field("attr_id") String attr_id, @Field("order_sn") String order_sn, @Field("comment") String comment, @Field("level") int level);
 
     /**
      * 评论列表
@@ -799,7 +799,8 @@ public interface APIService {
                                               @Field("reason") String reason,
                                               @Field("attr_id") String attr_id,
                                               @Field("order_sn") String order_sn,
-                                              @Field("pic") String pic
+                                              @Field("pic") String pic,
+                                              @Field("order_type") int order_type
                                              );
     /**
      * 售后订单列表
@@ -807,7 +808,8 @@ public interface APIService {
      * @return
      */
     @POST("api/exchangeGoodList")
-    Call<BaseResponse<List<AfterSaleGoodsInfo>>> exchangeGoodList(@Header("X-AUTH-TOKEN") String token);
+    @FormUrlEncoded
+    Call<BaseResponse<List<AfterSaleGoodsInfo>>> exchangeGoodList(@Header("X-AUTH-TOKEN") String token,@Field("order_type") int order_type);
 
 
 

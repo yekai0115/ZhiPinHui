@@ -111,7 +111,11 @@ public class AfterSaleActivity extends BaseActivity implements AdapterView.OnIte
     private DialogSelPhoto dialogSelPhoto;
     private OSS oss;
     private String token;
-
+    /*
+     *1普通商品售后
+     * 2小哈售后
+     */
+    private int order_type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,6 +128,7 @@ public class AfterSaleActivity extends BaseActivity implements AdapterView.OnIte
         value=getIntent().getStringExtra("value");
         order_sn=getIntent().getStringExtra("order_sn");
         attr_id=getIntent().getStringExtra("attr_id");
+        order_type=getIntent().getIntExtra("order_type",1);
         token = (String) SPUtils.get(mContext, "token", "");
         token = EncodeUtils.base64Decode2String(token);
         initDialog();
@@ -476,7 +481,7 @@ public class AfterSaleActivity extends BaseActivity implements AdapterView.OnIte
     private void submitExchange(String  reason,String pic) {
         dialog.show();
         APIService userBiz = RetrofitWrapper.getInstance().create(APIService.class);
-        Call<BaseResponse<Object>> call = userBiz.submitExchange(token,reason,attr_id,order_sn,pic);
+        Call<BaseResponse<Object>> call = userBiz.submitExchange(token,reason,attr_id,order_sn,pic,order_type);
         call.enqueue(new HttpCallBack<BaseResponse<Object>>() {
             @Override
             public void onResponse(Call<BaseResponse<Object>> arg0,

@@ -25,6 +25,7 @@ import com.zph.commerce.bean.OrderGoodsInfo;
 import com.zph.commerce.bean.PayData;
 import com.zph.commerce.constant.MyConstant;
 import com.zph.commerce.eventbus.LoginMsgEvent;
+import com.zph.commerce.eventbus.MsgEvent16;
 import com.zph.commerce.eventbus.MsgEvent17;
 import com.zph.commerce.http.HttpCallBack;
 import com.zph.commerce.interfaces.ListItemClickHelp;
@@ -409,10 +410,14 @@ public class OrderDetalActivity extends BaseActivity implements PullLayout.OnRef
                 break;
             case R.id.btn_evaluate://评价
                 if (status == 3) {//待评价
-//                    intent = new Intent(mContext, EvaluateActivity.class);
-//                    intent.putExtra("order_sn", order_sn);//订单号
-//                    intent.putExtra("attr_id", goodsInfo.getAttr_id());//
-//                    intent.putExtra("good_id", goodsInfo.getGood_id());//
+                    StringBuilder sb = new StringBuilder();
+                    for(OrderGoodsInfo orderGoodsInfo:goodsInfoList){
+                        sb.append(orderGoodsInfo.getAttr_id()).append(",");
+                    }
+                    String attr_id= sb.deleteCharAt(sb.length() - 1).toString();
+                    intent = new Intent(mContext, EvaluateActivity.class);
+                    intent.putExtra("order_sn", order_sn);//订单号
+                    intent.putExtra("attr_id", attr_id);//
                     startActivity(intent);
                 }
                 break;
@@ -483,6 +488,12 @@ public class OrderDetalActivity extends BaseActivity implements PullLayout.OnRef
     }
 
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEventMain(MsgEvent16 messageEvent) {
+        getOrderDetail(1);
+    }
+
+
     /**
      */
     private void setListviewHeight(ListView listView) {
@@ -512,6 +523,7 @@ public class OrderDetalActivity extends BaseActivity implements PullLayout.OnRef
             String[] arr = goods_logo.split(",");
             intent = new Intent(mContext, AfterSaleActivity.class);
             intent.putExtra("value", orderGoodsInfo.getValue());
+            intent.putExtra("order_type", 1);
             intent.putExtra("order_sn", order_sn);
             intent.putExtra("name", orderGoodsInfo.getName());
             intent.putExtra("attr_id", orderGoodsInfo.getAttr_id());

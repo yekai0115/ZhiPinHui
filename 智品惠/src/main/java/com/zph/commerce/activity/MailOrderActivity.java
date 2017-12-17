@@ -1,6 +1,7 @@
 package com.zph.commerce.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -72,7 +73,9 @@ public class MailOrderActivity extends BaseActivity {
 
             @Override
             public void onRightClick() {
-                openActivity(AfterSaleOrderActivity.class);
+                Intent intent=new Intent(context,AfterSaleOrderActivity.class);
+                intent.putExtra("order_type",1);
+               startActivity(intent);
             }
         });
     }

@@ -92,6 +92,7 @@ public class WisdomOrderAdapter extends BaseAdapter {
             holderView.rl_detal.setVisibility(View.VISIBLE);
             holderView.ll_state.setVisibility(View.VISIBLE);
             holderView.tv_shouhuo.setVisibility(View.VISIBLE);
+            holderView.tv_shouhuo.setText("确认收货");
         } else if (status == 3) {//提货订单已完成，未评价
             holderView.tv_order_state.setText(remark);
             holderView.ll_state.setVisibility(View.VISIBLE);

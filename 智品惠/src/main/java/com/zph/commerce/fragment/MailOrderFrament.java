@@ -375,10 +375,14 @@ public class MailOrderFrament extends BaseFragment implements PullLayout.OnRefre
                 if (status == 2) {//待收货
                     showConfirmReceiptDialog(order_sn);
                 } else if (status == 3) {//待评价
+                    StringBuilder sb = new StringBuilder();
+                    for(OrderGoodsInfo orderGoodsInfo:orderInfo.getGoods_info_list()){
+                        sb.append(orderGoodsInfo.getAttr_id()).append(",");
+                    }
+                   String attr_id= sb.deleteCharAt(sb.length() - 1).toString();
                     intent = new Intent(context, EvaluateActivity.class);
                     intent.putExtra("order_sn", order_sn);//订单号
-                    intent.putExtra("attr_id", goodsInfo.getAttr_id());//
-                    intent.putExtra("good_id", goodsInfo.getGood_id());//
+                    intent.putExtra("attr_id", attr_id);//
                     startActivity(intent);
                 }
                 break;
